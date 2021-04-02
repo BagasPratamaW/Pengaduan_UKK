@@ -4,11 +4,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
     body {
-        background: #9053c7;
-    background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-    background: linear-gradient(-135deg, #c850c0, #4158d0);
+        background-image:url({{ asset('images/3.jpeg') }});
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
     }
 
     .btn-purple {
@@ -35,8 +33,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-5">
-            <h2 class="text-center text-white mb-0 mt-5">PENGWAR</h2>
-            <P class="text-center text-white mb-5">Pengaduan Wargat</P>
+            <h2 class="text-center text-black mb-0 mt-5">PENGWAR</h2>
+            <P class="text-center text-black mb-5">Pengaduan Wargat</P>
             <div class="card mt-5">
                 <div class="card-body">
                     <h2 class="text-center mb-4">FORM PENDAFTARAN</h2>
@@ -75,7 +73,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror">
+                            <input type="password" id="password" name="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror">
                             @error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -83,7 +81,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password_confirmation" placeholder="Password Confirmation" class="form-control @error('password_confirmation') is-invalid @enderror">
+                            <input type="password" id="confirm_password" placeholder="Password Confirmation" class="form-control @error('password_confirmation') is-invalid @enderror">
                             @error('password_confirmation')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -111,4 +109,24 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+    <script>
+
+        var password = document.getElementById("password")
+        , confirm_password = document.getElementById("confirm_password");
+        
+        function validatePassword(){
+            if(password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+        confirm_password.setCustomValidity('');
+    }
+}
+
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+
 @endsection

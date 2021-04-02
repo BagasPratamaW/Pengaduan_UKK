@@ -103,10 +103,9 @@
                     <div class="header-hero-content text-center">
                         <h3 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">Layanan
                             Pengaduan Warga</h3>
-                        <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Laporakan Keluhan
-                            Anda Ke Kami</p>
+                        <p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">pelaporan Pengaduan Warga Graha Subang Kencana 2</p>
                         <a href="#lapor" class="main-btn wow fadeInUp" data-wow-duration="1.3s"
-                            data-wow-delay="1.1s">Apa Pun Laporan Anda Akan Kami tangani</a>
+                            data-wow-delay="1.1s">BUAT LAPORAN!</a>
                     </div> <!-- header hero content -->
                 </div>
             </div>
@@ -176,7 +175,11 @@
                     <div class="form-group">
                         <input type="file" name="foto" class="form-control">
                     </div>
+                    @if (Auth::guard('masyarakat')->check())
                     <button type="submit" class="btn btn-custom mt-2">Kirim</button>
+                    @else
+                    <button data-target="#loginerr" data-toggle="modal" type="submit" class="btn btn-custom mt-2">Kirim</button>
+                    @endif
                 </form>
             </div>
         </div>
@@ -210,11 +213,11 @@
 
 <!--====== MODAL START ======-->
 
-<div class="wrapper modal fade" id="loginerr" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="wrapper modal fade" id="loginerr" tabindex="-2" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <div>Login Terlebih Dahulu</div>
+                <div class="text-center">Login Terlebih Dahulu</div>
             </div>
         </div>
     </div>
@@ -263,11 +266,7 @@
 @endsection
 <!--====== Jquery js ======-->
 @section('js')
-{{-- @if (!Auth::guard('masyarakat')->check())
-<script>
-    $('#loginerr').modal('show');
-</script>
-@endif --}}
+
 
 <script src="{{ asset('exten/js/popper.min.js') }}"></script>
 <script src="{{ asset('exten/js/main.js') }}"></script>

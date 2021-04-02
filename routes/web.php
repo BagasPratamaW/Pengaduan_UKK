@@ -28,6 +28,7 @@ Route::get('/', [UserController::class, 'index'])->name('pengwar.index');
 Route::post('/masyarakat/sendverification', [EmailController::class, 'sendVerification'])->name('pengwar.sendVerification');
 Route::get('/masyarakat/verify/{nik}', [EmailController::class, 'verify'])->name('pengwar.verify');
 
+
 Route::middleware(['isMasyarakat'])->group(function () {
     // Pengaduan
     Route::post('/store', [UserController::class, 'storePengaduan'])->name('pengwar.store');

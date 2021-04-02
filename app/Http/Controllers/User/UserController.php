@@ -99,15 +99,14 @@ class UserController extends Controller
             'nama' => ['required', 'string'],
             'email' => ['required', 'email', 'string', 'unique:masyarakat'],
             'username' => ['required', 'string', 'regex:/^\S*$/u', 'unique:masyarakat'],
-            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
-            'password_confirmation' => 'min:6',
+            'password' => ['required', 'min:6'],
             'telp' => ['required'],
         ]);
 
         // Pengecekan jika validate fails atau gagal
         if ($validate->fails()) {
             return redirect()->back()->withErrors($validate)->withInput();
-        }
+        } 
 
         // Mengecek email
         $email = Masyarakat::where('email', $request->username)->first();
@@ -117,14 +116,6 @@ class UserController extends Controller
             return redirect()->back()->with(['pesan' => 'Email sudah terdaftar'])->withInput(['email' => 'asd']);
         }
 
-        // jika isinya string username, cek username nya di table masyarakat
-        // $nik = Masyarakat::where('nik', $request->nik)->first();
-
-        // // // Pengecekan variable $username jika tidak ada di table masyarakat
-        // if (!$nik) {
-        //     return redirect()->back()->with(['pesan' => 'NIK Harus 16 Digit']);
-        // }
-
         // Mengecek username
         $username = Masyarakat::where('username', $request->username)->first();
 
@@ -133,12 +124,6 @@ class UserController extends Controller
             return redirect()->back()->with(['pesan' => 'Username sudah terdaftar'])->withInput(['username' => null]);
         }
 
-        $this->validate($request, [
-            'name' => 'required|min:3|max:50',
-            'email' => 'email',
-            'vat_number' => 'max:13',
-            'password' => 'required|confirmed|min:6',
-        ]);
 
         // Memasukkan data kedalam table Masyarakat
         Masyarakat::create([
@@ -151,7 +136,7 @@ class UserController extends Controller
         ]);
 
         // Kirim link verifikasi email
-        // $link = URL::temporarySignedRoute('pengwar.verify', now()->addMinutes(30), ['nik' => $data['nik']]);
+        // $link = URL::temporarySignedRoute('pekat.verify', now()->addMinutes(30), ['nik' => $data['nik']]);
         // Mail::to($data['email'])->send(new VerifikasiEmailUntukRegistrasiPengaduanMasyarakat($data['nama'], $link));
 
         // Arahkan ke route pengwar.index

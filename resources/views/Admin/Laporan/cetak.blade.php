@@ -11,6 +11,7 @@
     <title>Laporan Pengaduan</title>
 </head>
 <body>
+
     <div class="text-center">
         <h5>Laporan Pengaduan Masyarakat</h5>
     </div>
@@ -20,6 +21,8 @@
                 <tr>
                     <th>No</th>
                     <th>Tanggal</th>
+                    <th>NIK</th>
+                    <th>Lokasi</th>
                     <th>Isi Laporan</th>
                     <th>Status</th>
                 </tr>
@@ -29,6 +32,8 @@
                     <tr>
                         <td>{{ $k += 1 }}</td>
                         <td>{{ $v->tgl_pengaduan->format('d-M-Y') }}</td>
+                        <td>{{ $v->nik }}</td>
+                        <td>{{ $v->lokasi_kejadian }}</td>
                         <td>{{ $v->isi_laporan }}</td>
                         <td>{{ $v->status == '0' ? 'Pending' : ucwords($v->status) }}</td>
                     </tr>

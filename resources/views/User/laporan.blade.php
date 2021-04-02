@@ -178,42 +178,11 @@
                     </div>
                 </div>
             </div>
-
+        </div>
             {{-- ===================== new card profile ============================= --}}
 
             {{-- ============ START CARD PROFILE =============== --}}
 
-            {{-- <div class="content content-bottom shadow">
-                <div>
-                    <img src="{{ asset('images/user_default.svg') }}" alt="user profile" class="photo">
-                    <div class="self-align">
-                        <h5><a style="color: #020bff" href="#">{{ Auth::guard('masyarakat')->user()->nama }}</a></h5>
-                        <p class="text-dark">{{ Auth::guard('masyarakat')->user()->username }}</p>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col">
-                            <p class="italic mb-0">Terverifikasi</p>
-                            <div class="text-center">
-                                {{ $hitung[0] }}
-                            </div>
-                        </div>
-                        <div class="col">
-                            <p class="italic mb-0">Proses</p>
-                            <div class="text-center">
-                                {{ $hitung[1] }}
-                            </div>
-                        </div>
-                        <div class="col">
-                            <p class="italic mb-0">Selesai</p>
-                            <div class="text-center">
-                                {{ $hitung[2] }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-        </div>
-    </div>
 
     {{-- ============ END CARD PROFILE =============== --}}
 

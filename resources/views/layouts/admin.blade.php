@@ -13,6 +13,7 @@
         
     @yield('css')
 
+    <link rel="shortcut icon" href="{{ asset('images/icon.svg') }}" type="image/png">
     <style>
         .btn-purple {
             background: #002fff;
